@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { defaultTransition } from '../../lib/motionVariants'
 import { siteConfig } from '../../data/siteConfig'
+import { lazy, Suspense } from 'react'
+const OceanParticles = lazy(() => import('../ui/OceanParticles'))
 
 const HERO_VIDEO = '/videos/10480-224857514.mp4'
 
@@ -24,6 +26,10 @@ export default function Hero() {
         className="absolute inset-0 bg-gradient-to-b from-[rgba(6,12,18,0.45)] via-transparent to-transparent"
         aria-hidden="true"
       />
+
+      <Suspense fallback={null}>
+        <OceanParticles variant="deep" />
+      </Suspense>
 
       {/* Bottom fade — blends video into the section below */}
       <div
