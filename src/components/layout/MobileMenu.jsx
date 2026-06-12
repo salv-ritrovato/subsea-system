@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { navigationLinks } from '../../data/navigationData'
+import { navigationLinks, secondaryNavLinks } from '../../data/navigationData'
 import './navbar.css'
 
 const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
@@ -84,21 +84,25 @@ export default function MobileMenu({ className = '' }) {
       >
         <nav aria-label="Mobile navigation">
           <ul className="flex flex-col items-center gap-10">
-            {navigationLinks.map(({ label, to }, index) => (
-              <li
-                key={to}
-                className="mobile-menu__item"
-                style={{ animationDelay: `${index * 60}ms` }}
-              >
-                <Link
-                  to={to}
-                  onClick={closeMenu}
-                  className="font-sans text-sm font-medium uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-70"
+            {[...navigationLinks, null, ...secondaryNavLinks].map((item, index) =>
+              item === null ? (
+                <li key="divider" aria-hidden="true" className="h-px w-12 bg-white/12" />
+              ) : (
+                <li
+                  key={item.to}
+                  className="mobile-menu__item"
+                  style={{ animationDelay: `${index * 60}ms` }}
                 >
-                  {label}
-                </Link>
-              </li>
-            ))}
+                  <Link
+                    to={item.to}
+                    onClick={closeMenu}
+                    className="font-sans text-sm font-medium uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-70"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              )
+            )}
           </ul>
         </nav>
       </div>

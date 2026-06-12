@@ -9,6 +9,14 @@ export const navigationLinks = [
 ]
 
 /**
+ * Secondary navbar links — standalone pages shown alongside primary links.
+ */
+export const secondaryNavLinks = [
+  { label: 'Engineering', to: '/engineering' },
+  { label: 'Deep Ocean', to: '/deep-ocean' },
+]
+
+/**
  * Separate engineering page — accessed via contextual CTAs and footer, not main nav.
  */
 export const engineeringPage = {
