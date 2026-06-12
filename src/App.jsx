@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { MotionConfig } from 'framer-motion'
 import Layout from './components/layout/Layout'
 import HomePage from './pages/HomePage'
 import EngineeringPage from './pages/EngineeringPage'
@@ -7,6 +8,7 @@ import NotFoundPage from './pages/NotFoundPage'
 
 export default function App() {
   return (
+    <MotionConfig reducedMotion="user">
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
@@ -17,5 +19,6 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </MotionConfig>
   )
 }

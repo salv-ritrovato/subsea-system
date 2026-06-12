@@ -1,18 +1,14 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Logo from '../ui/Logo'
 import NavLinks from './NavLinks'
 import MobileMenu from './MobileMenu'
 import { defaultTransition, fadeDown } from '../../lib/motionVariants'
 import './navbar.css'
 
-/**
- * Site header — fixed overlay with scroll-aware backdrop and entrance animation.
- */
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const prefersReducedMotion = useReducedMotion()
   const { pathname } = useLocation()
   const isHome = pathname === '/'
   const showBackdrop = scrolled || !isHome
@@ -24,16 +20,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [pathname])
 
-  const Header = prefersReducedMotion ? 'header' : motion.header
-
   return (
-    <Header
-      {...(!prefersReducedMotion && {
-        initial: 'hidden',
-        animate: 'visible',
-        variants: fadeDown,
-        transition: { ...defaultTransition, delay: 0.15 },
-      })}
+    <motion.header
+      initial="hidden"
+      animate="visible"
+      variants={fadeDown}
+      transition={{ ...defaultTransition, delay: 0.15 }}
       className={[
         'fixed top-0 left-0 z-50 w-full px-8 py-7 transition-[background-color,backdrop-filter] duration-500 md:px-12 md:py-8',
         showBackdrop ? 'bg-[#060c12]/75 backdrop-blur-md' : 'bg-transparent',
@@ -57,6 +49,6 @@ export default function Navbar() {
           <MobileMenu className="lg:hidden" />
         </div>
       </div>
-    </Header>
+    </motion.header>
   )
 }

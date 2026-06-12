@@ -1,12 +1,10 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { defaultTransition } from '../../lib/motionVariants'
 import { siteConfig } from '../../data/siteConfig'
 
 const HERO_VIDEO = '/videos/10480-224857514.mp4'
 
 export default function Hero() {
-  const prefersReducedMotion = useReducedMotion()
-
   return (
     <section className="relative flex min-h-svh flex-col items-center justify-end overflow-hidden">
       <video
@@ -33,48 +31,38 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      {prefersReducedMotion ? (
-        <div className="relative z-10 px-8 pb-10 text-center text-white">
-          <h1 className="font-serif text-4xl font-light italic tracking-wide md:text-5xl lg:text-6xl">
-            {siteConfig.tagline}
-          </h1>
-        </div>
-      ) : (
-        <motion.div
-          className="relative z-10 px-8 pb-10 text-center text-white"
-          initial={{ opacity: 0, y: 48 }}
+      <motion.div
+        className="relative z-10 px-8 pb-10 text-center text-white"
+        initial={{ opacity: 0, y: 48 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ ...defaultTransition, duration: 1.1, delay: 0.45 }}
+      >
+        <motion.h1
+          className="font-serif text-4xl font-light italic tracking-wide md:text-5xl lg:text-6xl"
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ ...defaultTransition, duration: 1.1, delay: 0.45 }}
+          transition={{ ...defaultTransition, duration: 1, delay: 0.65 }}
         >
-          <motion.h1
-            className="font-serif text-4xl font-light italic tracking-wide md:text-5xl lg:text-6xl"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ ...defaultTransition, duration: 1, delay: 0.65 }}
-          >
-            {siteConfig.tagline}
-          </motion.h1>
-        </motion.div>
-      )}
+          {siteConfig.tagline}
+        </motion.h1>
+      </motion.div>
 
-      {!prefersReducedMotion && (
+      <motion.div
+        className="relative z-10 mb-10 flex flex-col items-center gap-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.8, duration: 1 }}
+        aria-hidden="true"
+      >
         <motion.div
-          className="relative z-10 mb-10 flex flex-col items-center gap-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.8, duration: 1 }}
-          aria-hidden="true"
-        >
-          <motion.div
-            className="h-9 w-px bg-gradient-to-b from-white/40 to-transparent"
-            animate={{ opacity: [0.35, 0.85, 0.35] }}
-            transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <span className="font-sans text-[8px] font-medium uppercase tracking-[0.3em] text-white/25">
-            Scroll
-          </span>
-        </motion.div>
-      )}
+          className="h-9 w-px bg-gradient-to-b from-white/40 to-transparent"
+          animate={{ opacity: [0.35, 0.85, 0.35] }}
+          transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <span className="font-sans text-[8px] font-medium uppercase tracking-[0.3em] text-white/25">
+          Scroll
+        </span>
+      </motion.div>
     </section>
   )
 }
