@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { observationStats } from '../../data/deepOceanData'
+import { fleetAnchor } from '../../data/navigationData'
 import Reveal from '../ui/Reveal'
 
 export default function ObservationStats() {
@@ -22,10 +23,10 @@ export default function ObservationStats() {
               disturbing the ecosystems we observe.
             </p>
             <Link
-              to="/#fleet"
+              to={fleetAnchor.to}
               className="mt-8 inline-block font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-sky-400/80 transition-opacity duration-300 hover:opacity-70"
             >
-              View the fleet →
+              {fleetAnchor.cta} →
             </Link>
           </Reveal>
 

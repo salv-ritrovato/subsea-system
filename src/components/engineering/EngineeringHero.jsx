@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { engineeringHero } from '../../data/engineeringData'
+import { fleetAnchor } from '../../data/navigationData'
 import { defaultTransition } from '../../lib/motionVariants'
 import './engineering.css'
 
@@ -53,10 +54,10 @@ function HeroContent() {
         {engineeringHero.subtitle}
       </p>
       <Link
-        to="/#fleet"
+        to={fleetAnchor.to}
         className="mt-10 inline-block border border-white/20 px-6 py-3 font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-white/80 transition-all duration-300 hover:border-sky-400/40 hover:text-white"
       >
-        View the fleet
+        {fleetAnchor.cta}
       </Link>
     </>
   )

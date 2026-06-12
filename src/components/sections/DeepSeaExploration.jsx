@@ -52,7 +52,7 @@ export default function DeepSeaExploration() {
             to={deepOceanPage.path}
             className="font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-sky-400/80 transition-opacity duration-300 hover:opacity-70"
           >
-            Explore bioluminescent zones →
+            {deepOceanPage.cta} →
           </Link>
         </Reveal>
       </div>

@@ -69,7 +69,7 @@ function HeroContent({ hero }) {
         to="/#exploration"
         className="mt-10 inline-block border border-white/20 px-6 py-3 font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-white/80 transition-all duration-300 hover:border-sky-400/40 hover:text-white"
       >
-        View exploration missions
+        {hero.cta}
       </Link>
     </>
   )

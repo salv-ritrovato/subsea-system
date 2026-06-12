@@ -1,4 +1,5 @@
 import { roversCards } from '../../data/roversData'
+import { engineeringPage } from '../../data/navigationData'
 import FeatureCard from '../ui/FeatureCard'
 import EngineeringLink from '../ui/EngineeringLink'
 import Reveal, { StaggerItem, StaggerReveal } from '../ui/Reveal'
@@ -22,7 +23,7 @@ export default function AutonomousRovers() {
               Purpose-built underwater androids that operate independently — mapping,
               inspecting, and executing missions where human presence is impossible.{' '}
               <EngineeringLink className="inline tracking-[0.14em]">
-                How we build them →
+                {engineeringPage.ctaHow} →
               </EngineeringLink>
             </p>
           </header>

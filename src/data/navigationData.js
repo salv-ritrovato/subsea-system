@@ -16,6 +16,7 @@ export const engineeringPage = {
   label: 'Engineering',
   cta: 'Explore engineering',
   ctaLong: 'See how we build them',
+  ctaHow: 'How we build them',
 }
 
 /**
@@ -24,6 +25,13 @@ export const engineeringPage = {
 export const deepOceanPage = {
   path: '/deep-ocean',
   label: 'Deep Ocean',
+  cta: 'Explore bioluminescent zones',
+}
+
+/** Fleet section anchor — used for "View the fleet" CTAs on secondary pages. */
+export const fleetAnchor = {
+  to: '/#fleet',
+  cta: 'View the fleet',
 }
 
 /** Footer includes main sections plus secondary pages. */

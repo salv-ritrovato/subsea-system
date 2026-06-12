@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { defaultTransition } from '../../lib/motionVariants'
+import { siteConfig } from '../../data/siteConfig'
 
 const HERO_VIDEO = '/videos/10480-224857514.mp4'
 
@@ -35,7 +36,7 @@ export default function Hero() {
       {prefersReducedMotion ? (
         <div className="relative z-10 px-8 pb-10 text-center text-white">
           <h1 className="font-serif text-4xl font-light italic tracking-wide md:text-5xl lg:text-6xl">
-            Engineering the deep.
+            {siteConfig.tagline}
           </h1>
         </div>
       ) : (
@@ -51,7 +52,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...defaultTransition, duration: 1, delay: 0.65 }}
           >
-            Engineering the deep.
+            {siteConfig.tagline}
           </motion.h1>
         </motion.div>
       )}

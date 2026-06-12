@@ -6,6 +6,7 @@ export const deepOceanHero = {
   subtitle:
     'Below the photic zone, bioluminescence replaces sunlight. Our autonomous platforms are the only eyes capable of sustained observation at these depths.',
   label: 'Bioluminescent Zones',
+  cta: 'View exploration missions',
 }
 
 export const depthZones = [
