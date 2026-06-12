@@ -12,7 +12,6 @@ export default function Hero() {
       <video
         className="absolute inset-0 h-full w-full object-cover"
         src={HERO_VIDEO}
-        poster="/pictures/seth0s-dive-677990.jpg"
         autoPlay
         muted
         loop
