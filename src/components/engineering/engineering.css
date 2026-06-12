@@ -36,13 +36,12 @@
 
   .engineering-fade-bottom--to-video {
     z-index: 15;
-    height: 14rem;
+    height: 10rem;
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      rgba(6, 12, 18, 0.45) 20%,
-      rgba(4, 8, 14, 0.85) 50%,
-      rgba(3, 6, 9, 0.95) 78%,
+      rgba(6, 12, 18, 0.3) 30%,
+      rgba(4, 8, 14, 0.75) 65%,
       #030609 100%
     );
   }
