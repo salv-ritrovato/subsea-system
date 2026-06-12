@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { navigationLinks, secondaryNavLinks } from '../../data/navigationData'
 import './navbar.css'
@@ -57,6 +58,42 @@ export default function MobileMenu({ className = '' }) {
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [isOpen])
 
+  const overlay = (
+    <div
+      ref={panelRef}
+      id="mobile-menu-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
+      className={`mobile-menu__overlay ${isOpen ? 'mobile-menu__overlay--open' : ''}`}
+      aria-hidden={!isOpen}
+    >
+      <nav aria-label="Mobile navigation">
+        <ul className="flex flex-col items-center gap-10">
+          {[...navigationLinks, null, ...secondaryNavLinks].map((item, index) =>
+            item === null ? (
+              <li key="divider" aria-hidden="true" className="h-px w-12 bg-white/12" />
+            ) : (
+              <li
+                key={item.to}
+                className="mobile-menu__item"
+                style={{ animationDelay: `${index * 60}ms` }}
+              >
+                <Link
+                  to={item.to}
+                  onClick={closeMenu}
+                  className="font-sans text-sm font-medium uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-70"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            )
+          )}
+        </ul>
+      </nav>
+    </div>
+  )
+
   return (
     <div className={`relative ${className}`}>
       <button
@@ -73,39 +110,7 @@ export default function MobileMenu({ className = '' }) {
         <span className={`mobile-menu__bar ${isOpen ? 'mobile-menu__bar--bot-open' : ''}`} />
       </button>
 
-      <div
-        ref={panelRef}
-        id="mobile-menu-panel"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Navigation menu"
-        className={`mobile-menu__overlay ${isOpen ? 'mobile-menu__overlay--open' : ''}`}
-        aria-hidden={!isOpen}
-      >
-        <nav aria-label="Mobile navigation">
-          <ul className="flex flex-col items-center gap-10">
-            {[...navigationLinks, null, ...secondaryNavLinks].map((item, index) =>
-              item === null ? (
-                <li key="divider" aria-hidden="true" className="h-px w-12 bg-white/12" />
-              ) : (
-                <li
-                  key={item.to}
-                  className="mobile-menu__item"
-                  style={{ animationDelay: `${index * 60}ms` }}
-                >
-                  <Link
-                    to={item.to}
-                    onClick={closeMenu}
-                    className="font-sans text-sm font-medium uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-70"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              )
-            )}
-          </ul>
-        </nav>
-      </div>
+      {createPortal(overlay, document.body)}
     </div>
   )
 }
