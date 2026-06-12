@@ -33,7 +33,9 @@ export default function Navbar() {
     >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6">
         <div className="flex items-center gap-8">
-          <Logo />
+          <Link to="/" aria-label="Back to home">
+            <Logo />
+          </Link>
           {!isHome && (
             <Link
               to="/"
