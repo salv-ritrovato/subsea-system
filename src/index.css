@@ -2,8 +2,8 @@
 @import './components/ui/shared.css';
 
 @theme {
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Figtree', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
 
   --color-deep-bg: #060c12;
   --color-deep-bg-alt: #040810;
