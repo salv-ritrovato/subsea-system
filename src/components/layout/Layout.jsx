@@ -2,21 +2,34 @@ import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import { useLenis, getLenis } from '../../lib/useLenis'
 
-/**
- * Shared shell — handles scroll restoration and hash navigation.
- */
 export default function Layout() {
   const { pathname, hash } = useLocation()
+
+  useLenis()
 
   useEffect(() => {
     if (hash) {
       const timer = setTimeout(() => {
-        document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' })
+        const el = document.querySelector(hash)
+        if (!el) return
+        const lenis = getLenis()
+        if (lenis) {
+          lenis.scrollTo(el, { offset: -96, duration: 1.4 })
+        } else {
+          el.scrollIntoView({ behavior: 'smooth' })
+        }
       }, 100)
       return () => clearTimeout(timer)
     }
-    window.scrollTo(0, 0)
+
+    const lenis = getLenis()
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true })
+    } else {
+      window.scrollTo(0, 0)
+    }
   }, [pathname, hash])
 
   return (
