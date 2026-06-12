@@ -15,10 +15,12 @@ export default function DeepOceanHero() {
         <video
           className="absolute inset-0 h-full w-full object-cover"
           src={JELLYFISH_VIDEO}
+          poster="/pictures/maneph9-jellyfish-5818601.jpg"
           autoPlay
           muted
           loop
           playsInline
+          preload="none"
           aria-hidden="true"
         />
         <div
